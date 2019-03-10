@@ -1,7 +1,8 @@
-import React, { Fragment, useState } from 'react';
 import {
 	Form, Icon, Input, Button,
 } from 'antd';
+
+import React, { Fragment, useState } from 'react';
 const initialState = {
 	username: "",
 	email: "",
@@ -33,7 +34,7 @@ export default class Registrar extends React.Component {
   };
 	render() {
 		return (
-			<div className="container jumbotron">
+			<div className="container ">
 				<Fragment>
 					<h2 className="App">
 						Registrate
@@ -49,11 +50,11 @@ export default class Registrar extends React.Component {
 
 						</Form.Item>
 						<Form.Item>
-							<Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} onChange={this.handleChange} type="password" placeholder="Password" />
+							<Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} name="password" onChange={this.handleChange} type="password" placeholder="Password" />
 
 						</Form.Item>
 						<Form.Item>
-							<Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} onChange={this.handleChange} type="password" placeholder="Confirmation password" />
+							<Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} name="passwordConfirmation" onChange={this.handleChange} type="password" placeholder="Confirmation password" />
 
 						</Form.Item>
 						<Form.Item>

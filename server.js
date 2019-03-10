@@ -5,6 +5,10 @@ const User=require('./models/User')
 
 const Recipe=require('./models/Recipe')
 
+
+
+const { GraphQLServer } =require('graphql-yoga')
+
 const {resolvers}=require('./graphql/resolvers');
 const {typeDefs}=require('./graphql/schema');
 const { ApolloServer, gql } = require('apollo-server');
@@ -31,3 +35,6 @@ const server = new ApolloServer({
 server.listen().then(({ url }) => {
   console.log(`🚀 Server ready at ${url}`)
 });
+
+
+
