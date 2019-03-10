@@ -30,14 +30,13 @@ function  App() {
 
       return  (
         <h2>
-           {data.greeting}
+           {/*{data.greeting}
 	      
-
 	      <p>You clicked {count} times</p>
 <button onClick={() => setCount(count + 1)}>
         Click me
 </button>
-	      componentes
+      componentes*/}
 	      <Routes/>
         </h2>
       );
