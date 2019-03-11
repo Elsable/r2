@@ -17,16 +17,16 @@ const NavbarUnAuth=()=>(
       <li className="nav-item">
         <a className="nav-link" href="/search">Search</a>
       </li>
-      <li className="nav-item">
+    </ul>
+    <form className="form-inline my-2 my-lg-0">
+    <ul className="navbar-nav mr-auto">
+    <li className="nav-item">
         <a className="nav-link" href="/Signin">Signin</a>
       </li>
       <li className="nav-item">
         <a className="nav-link" href="/Signup">Signup</a>
       </li>
-    </ul>
-    <form className="form-inline my-2 my-lg-0">
-      <input className="form-control mr-sm-2" type="text" placeholder="Search"/>
-      <button className="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+      </ul>
     </form>
   </div>
 </nav>
@@ -35,7 +35,9 @@ const NavbarUnAuth=()=>(
 export default class Nabvar  extends React.Component	{
   render() {
     return (
+      <Fragment> 
       <NavbarUnAuth/>
+      </Fragment>
     );
 }}
 

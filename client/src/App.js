@@ -9,7 +9,7 @@ import client from './apolloClient';
 import { HolaMundo } from './queries';
 
 function App() {
-	const [ count, setCount ] = useState(0);
+	// const [ count, setCount ] = useState(0);
 	return (
 		<ApolloProvider client={client}>
 			<ApolloProviderHooks client={client}>

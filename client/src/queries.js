@@ -5,6 +5,20 @@ export const HolaMundo = gql`
     greeting
   }
 `;
+
+export const GET_CURRENT_USER = gql`
+  query {
+    getCurrentUser {
+      username
+      joinDate
+      email
+      favorites {
+        _id
+        name
+      }
+    }
+  }
+`;
 export const GET_ALL_RECIPES=gql`
 {
 getAllRecipes{
@@ -25,6 +39,7 @@ export const SIGNIN_USER = gql`
 		          }
 	    }
 `;
+
 
 export const SIGNUP_USER = gql`
   mutation($username: String!, $email: String!, $password: String!) {

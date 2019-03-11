@@ -33,6 +33,8 @@ export default class Registrar extends React.Component {
 			event.preventDefault();
 			signupUser().then(data=>{
 				console.log(data);
+			localStorage.setItem('token',data.signupUser.token);
+				this.clearState();
 			});
 		}
 	  
@@ -76,6 +78,7 @@ export default class Registrar extends React.Component {
 							<Button
 								type="primary"
 								htmlType="submit"
+								disabled={loading|| this.validateForm()}
 							>
 								Registrate
           </Button>

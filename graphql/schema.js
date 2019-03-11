@@ -3,6 +3,9 @@ type Query{
 greeting: String
 
 getAllRecipes: [Recipe]
+
+
+getCurrentUser: User
 }
 
 type Recipe{
@@ -33,7 +36,8 @@ type User{
 
 
 type Mutation{
-        addRecipe(name: String!, description: String!, category: String!, instructions: String!, username: String ): Recipe
+		addRecipe(name: String!, description: String!, category: String!, instructions: String!, username: String ): Recipe
+		signinUser(username:String!, password:String!):Token
 		signupUser(username:String!, email:String!, password:String!): Token
 	}	
 `

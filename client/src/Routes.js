@@ -4,7 +4,7 @@ import { Layout } from 'antd';
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 
 import Search from "antd/lib/transfer/search";
-
+import withSession from './components/withSession'
 import Home from "./components/Home";
 import Nabvar from './components/Nabvar';
 import Entrar from "./components/SignIn";
@@ -16,6 +16,7 @@ const { Content, Footer } = Layout;
 const Root = () => (
 
 	<Router>
+		
 		<Switch>
 			<Route path="/" exact component={Home} />
 			<Route path="/Signup" render={()=><Registrar />} />
@@ -26,7 +27,7 @@ const Root = () => (
 	</Router>
 
 )
-
+const RootWithSession=withSession(Root);
 
 
 
@@ -34,6 +35,7 @@ export default function Rutas() {
 
 	return (
 		<Fragment>
+			
 	{/*}		<Layout className="layout">
 
 
@@ -45,7 +47,7 @@ export default function Rutas() {
 
 	content*/}
 		<Nabvar/>
-		<Root />
+		<RootWithSession />
 {/*}
 				</Content>
 				<Footer style={{ textAlign: 'center' }}>
