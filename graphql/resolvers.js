@@ -1,6 +1,15 @@
 const jwt =require( 'jsonwebtoken')
 const User = require('./../models/User');
+const gravatar = function (size) {
+	if (!this.size) size = 200;
+	if (!this.email) {
+		return 'https://gravatar.com/avatar/?s' + size + '&d=retro';
+	} else {
+		var md5 = crypto.createHash('md5').update(this.email).digest('hex');
+		return 'https://gravatar.com/avatar/' + md5 + '?s' + size + '&d=retro';
+	}
 
+}
 const createToken=(user,secret,expiresIn)=>{
 
     const{username,email}=user;
@@ -41,18 +50,17 @@ Query:{
 Mutation:{
 
 
-        addRecipe: async (root, { name, description, category, instructions, username }, { Recipe }) => {
-            user.picture = User.gravatar();
-            const newRecipe = await new Recipe({
-                name,
-                description,
-                category,
-                instructions,
-                username
-            }).save();
-            return newRecipe;
+    addRecipe: async (root, { name, description, category, instructions, username }, { Recipe }) => {
+        const newRecipe = await new Recipe({
+            name,
+            description,
+            category,
+            instructions,
+            username
+        }).save();
+        return newRecipe;
 
-    },
+},
 
     signinUser: async(root,{username,password},{User})=>{
         const user=await User.findOne({username});
@@ -71,14 +79,19 @@ Mutation:{
     
     signupUser: async (root,{username,email,password},{User})=>{
         const user= await User.findOne({username});
+
         if(user){
             throw new Error('El usuario ya existe');
         }
+       
         const newUser=await new User({
             username,
             email,
             password
-        }).save();
+        })
+     
+        
+        .save();
         return {token:createToken(newUser,process.env.SECRET,'1hr')}
     }
 

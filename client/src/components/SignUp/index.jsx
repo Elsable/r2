@@ -3,7 +3,7 @@ import {
 } from 'antd';
 
 import React, { Fragment, useState } from 'react';
-
+import {withRouter} from 'react-router-dom'
 import {SIGNUP_USER} from '../../queries'
 
 import {Mutation} from 'react-apollo';
@@ -16,7 +16,7 @@ const initialState = {
   };
   
 
-export default class Registrar extends React.Component {
+class Registrar extends React.Component {
 	
 	  state = { ...initialState };
 
@@ -31,10 +31,12 @@ export default class Registrar extends React.Component {
 
 		handleSubmit=(event,signupUser)=>{
 			event.preventDefault();
-			signupUser().then(data=>{
+			signupUser().then(async({data})=>{
 				console.log(data);
 			localStorage.setItem('token',data.signupUser.token);
+			await this.props.refetch();
 				this.clearState();
+				this.props.history.push('/')
 			});
 		}
 	  
@@ -98,3 +100,5 @@ export default class Registrar extends React.Component {
 
 	}
 }
+
+export default withRouter(Registrar)

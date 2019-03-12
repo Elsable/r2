@@ -6,24 +6,29 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-d
 import Search from "antd/lib/transfer/search";
 import withSession from './components/withSession'
 import Home from "./components/Home";
-import Nabvar from './components/Nabvar';
+
 import Entrar from "./components/SignIn";
 import Registrar from "./components/SignUp";
+import Profile from "./components/Profile";
+import AddRecipe from "./components/Recipe/AddRecipe";
+import Navbar from "./components/Nabvar";
 
 const { Content, Footer } = Layout;
 
-
-const Root = () => (
-
+const Root = ({ refetch, session }) => (
 	<Router>
-		
+	  <Fragment>
+		<Navbar session={session} />
 		<Switch>
 			<Route path="/" exact component={Home} />
-			<Route path="/Signup" render={()=><Registrar />} />
-			<Route path="/Signin" render={()=><Entrar />}/>
+			<Route path="/Signup" render={()=><Registrar refetch={refetch} />} />
+			<Route path="/Signin" render={()=><Entrar refetch={refetch}/>}/>
 			<Route path="/search" component={Search} />
-			<Redirect path ="/" />
+			<Route path="/profile" component={Profile} />
+			<Route path="/recipe/add" component={AddRecipe} />
+			<Redirect to='/' />
 		</Switch>
+		</Fragment>
 	</Router>
 
 )
@@ -35,31 +40,7 @@ export default function Rutas() {
 
 	return (
 		<Fragment>
-			
-	{/*}		<Layout className="layout">
-
-
-				<Nabvar />
-
-				<Content style={{ padding: '0 35px' }}>
-
-
-
-	content*/}
-		<Nabvar/>
 		<RootWithSession />
-{/*}
-				</Content>
-				<Footer style={{ textAlign: 'center' }}>
-					Ant Design ©2018 Created by Ant UED
-    </Footer>
-			</Layout>
-*/}
-
-
-
-
-
 		</Fragment>
 )
 

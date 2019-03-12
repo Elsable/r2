@@ -53,17 +53,15 @@ app.use(bodyParser.json());
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: async({ req ,currentUser}) => ({
+  context: async({ req }) => ({
     Recipe,
     User,
-    currentUser
+    currentUser: req.currentUser
   }),
   
 });
 server.applyMiddleware({
-  app,
-  
-  
+  app
 });
 
 

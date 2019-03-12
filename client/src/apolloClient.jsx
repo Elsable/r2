@@ -2,7 +2,7 @@ import ApolloClient from "apollo-boost";
 
 const client = new ApolloClient({
 	// uri: "http://localhost:4000"
-	uri: "http://192.168.0.100:4000/graphql",
+	uri: "http://192.168.5.29:4000/graphql",
 	fetchOptions:{
 		credentials:'include'
 	},

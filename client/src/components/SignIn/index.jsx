@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { Form, Icon, Input, Button } from 'antd';
 
 import { SIGNIN_USER } from '../../queries';
+import {withRouter} from 'react-router-dom'
 
 import { Mutation } from 'react-apollo';
 import { Error } from '../Error';
@@ -10,7 +11,7 @@ const initialState = {
 	password: ''
 };
 
-export default class Entrar extends React.Component {
+ class  Entrar extends React.Component {
 	state = { ...initialState };
 
 	clearState = () => {
@@ -24,10 +25,12 @@ export default class Entrar extends React.Component {
 
 	handleSubmit = (event, signinUser) => {
 		event.preventDefault();
-		signinUser().then(({data}) => {
+		signinUser().then(async({data}) => {
 			console.log(data);
 			localStorage.setItem('token',data.signinUser.token);
+			await this.props.refetch();
 			this.clearState();
+			this.props.history.push('/');
 		});
 	};
 
@@ -84,3 +87,4 @@ export default class Entrar extends React.Component {
 		);
 	}
 }
+export default  withRouter(Entrar)

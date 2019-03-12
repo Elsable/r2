@@ -1,6 +1,7 @@
 import React,{Fragment} from 'react';
 import {GET_ALL_RECIPES} from "../../queries";
 import {Query} from "react-apollo";
+import Card from './card';
 
 
 
@@ -16,7 +17,7 @@ return(
 		if(loading) return <div>Loading</div>
 		if(error) return <div>Error</div>
 		console.log(data);
-		return(<p>Recipes</p>)
+		return data.getAllRecipes.map(recipe=><Card datos={recipe}/>)
 	}}
 
 	</Query>
