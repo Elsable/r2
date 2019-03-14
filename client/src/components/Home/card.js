@@ -3,8 +3,8 @@ import { Card, Icon, Avatar } from 'antd';
 
 const { Meta } = Card;
 
-export default function Card1 () {
-console.log("datos")
+export default function Card1 (props) {
+console.log(props.datos)
 	return(
 	<Fragment>
 		<Card
@@ -14,7 +14,7 @@ console.log("datos")
   >
     <Meta
       avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-      title="Card title"
+      title={props.datos.name}
       description="This is the description"
     />
   </Card>
