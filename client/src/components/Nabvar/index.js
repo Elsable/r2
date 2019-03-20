@@ -1,12 +1,12 @@
 import React,{Fragment,useState} from 'react';
-import {NavLink} from 'react-router-dom';
+import {NavLink,Link} from 'react-router-dom';
 import Signout from '../Signout';
 
 
 const NavbarAuth = ({ session }) => (
   <Fragment>
   <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a className="navbar-brand" href="#">Navbar</a>
+  <NavLink className="navbar-brand" href="/">Navbar</NavLink>
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
   </button>
@@ -52,7 +52,7 @@ const NavbarAuth = ({ session }) => (
 )
 const NavbarUnAuth=()=>(
   <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a className="navbar-brand" href="#">Navbar</a>
+  <Link className="navbar-brand" to="/">Navbar</Link>
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
   </button>

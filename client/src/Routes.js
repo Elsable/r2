@@ -12,6 +12,7 @@ import Registrar from "./components/SignUp";
 import Profile from "./components/Profile";
 import AddRecipe from "./components/Recipe/AddRecipe";
 import Navbar from "./components/Nabvar";
+import  RecipePage  from "./components/Home/RecipePage";
 
 const { Content, Footer } = Layout;
 
@@ -26,6 +27,7 @@ const Root = ({ refetch, session }) => (
 			<Route path="/search" component={Search} />
 			<Route path="/profile" component={Profile} />
 			<Route path="/recipe/add" component={AddRecipe} />
+			<Route path="/recipes/:_id" component={RecipePage} />
 			<Redirect to='/' />
 		</Switch>
 		</Fragment>
