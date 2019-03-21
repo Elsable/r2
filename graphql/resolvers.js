@@ -24,14 +24,17 @@ exports.resolvers={
 Query:{
         greeting:()=>'hola mundo',
         getAllRecipes: async (root, args, { Recipe }) => {
-        const allRecipes = await Recipe.find();
+        const allRecipes = await Recipe.find().sort({ createdDate: "desc" });
         if (allRecipes) {
             return allRecipes;
         }
 
         return null;
     }, 
-    
+    getRecipe: async (root, { _id }, { Recipe }) => {
+        const recipe = await Recipe.findOne({ _id });
+        return recipe;
+      },
     getCurrentUser: async (root, args, { currentUser, User }) => {
         if (!currentUser) {
           return null;

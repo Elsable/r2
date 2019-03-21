@@ -15,7 +15,7 @@ function App() {
 			<ApolloProviderHooks client={client}>
 				<Query query={HolaMundo}>
 					{({ loading, data, error }) => {
-						console.log(data);
+					{/**	console.log(data); */}
 						if (loading) return 'loading';
 						if (error) return 'algo salio mal';
 

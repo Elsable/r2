@@ -16,8 +16,8 @@ return(
 	{({data,loading,error})=>{
 		if(loading) return <div>Loading</div>
 		if(error) return <div>Error</div>
-		console.log(data);
-		return data.getAllRecipes.map(recipe=><Card key={recipe._id} datos={recipe}/>)
+		{/*console.log(data); */}
+		return data.getAllRecipes.map(recipe=><Card key={recipe._id} {...recipe}/>)
 	}}
 
 	</Query>
